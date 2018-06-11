@@ -1,6 +1,18 @@
 const AuthController = require('./controllers/AuthController')
 const AuthControllerPolicy = require('./policies/AuthControllerPolicy')
 
+const ProjectController = require('./controllers/ProjectController')
+
+const WorkerController = require('./controllers/WorkerController')
+
+const ItemController = require('./controllers/ItemController')
+
+const SupplierController = require('./controllers/SupplierController')
+
+const InventoryController = require('./controllers/InventoryController')
+
+const BenefitController = require('./controllers/BenefitController')
+
 const UserController = require('./controllers/UserController')
 
 const JwtControllerPolicy = require('./policies/JwtControllerPolicy')
