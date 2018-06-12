@@ -1,21 +1,16 @@
-const { inventorys } = require('../models')
+const { inventory } = require('../models')
 
 module.exports = {
 
   index(req, res) {
-    inventorys.all(
-      {
-        attributes:{
-          exclude:['password']
-        }
-      }).then(inventory => {
+    inventory.all().then(inventory => {
         res.status(200).send(inventory)
     })
   },
 
   show(req, res) {
     const id = req.params.id
-    inventorys.findAll({
+    inventory.findAll({
       where: {
         id: id
       }
@@ -28,9 +23,27 @@ module.exports = {
     })
   },
 
+  async post(req, res) {
+    try {
+      var body = req.body
+
+      await inventory.create(body).then(inventory => {
+        res.status(201).send({
+          inventory
+        })
+      }).catch(error => {
+        res.status(400).send({
+          message: error.message
+        })
+      })
+    } catch (error) {
+      res.status(400).send(error)
+    }
+  },
+
   update(req, res) {
     const id = req.params.id
-    inventorys.update(req.body, {
+    inventory.update(req.body, {
       where: {
         id: id
       }

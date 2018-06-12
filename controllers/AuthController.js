@@ -53,7 +53,7 @@ module.exports = {
             } 
           })
       } else {
-        res.status(400).send({
+        res.status(401).send({
           message: 'Password not correct.'
         })
       }

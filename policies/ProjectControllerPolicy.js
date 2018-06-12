@@ -1,15 +1,12 @@
 const joi = require("joi")
 
 module.exports = {
-  register(req, res, next) {
+  createProject(req, res, next) {
     const schema = {
-      first_name: joi.string(),
-      last_name: joi.string(),
-      email: joi.string().email(),
-      username: joi.string(),
-      password: joi.string(),
-      contact: joi.string().allow(''),
-      address: joi.string().allow(''),
+      name: joi.string(),
+      client: joi.string(),
+      date_started: joi.date(),
+      status: joi.number().integer()
     }
 
     const { error, value } = joi.validate(req.body, schema)

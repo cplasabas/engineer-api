@@ -1,7 +1,7 @@
 const joi = require("joi")
 
 module.exports = {
-  register(req, res, next) {
+  createUserPermission(req, res, next) {
     const schema = {
       first_name: joi.string(),
       last_name: joi.string(),
@@ -10,6 +10,10 @@ module.exports = {
       password: joi.string(),
       contact: joi.string().allow(''),
       address: joi.string().allow(''),
+      level: joi.number().integer(),
+      parent: joi.number().integer(),
+      user_type_id: joi.number().integer(),
+      user_group_id: joi.number().integer()
     }
 
     const { error, value } = joi.validate(req.body, schema)

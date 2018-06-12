@@ -28,6 +28,26 @@ module.exports = {
     })
   },
 
+  async post(req, res) {
+    try {
+      var body = req.body
+      
+      await suppliers.create(body).then(suppliers => {
+        res.status(201).send({
+          suppliers
+        })
+      }).catch(() => {
+        res.status(400).send({
+          message: 'Supplier already exists.'
+        })
+      })
+    } catch (error) {
+      res.status(400).send({
+        message: 'Supplier creation failed.'
+      })
+    }
+  },
+
   update(req, res) {
     const id = req.params.id
     suppliers.update(req.body, {

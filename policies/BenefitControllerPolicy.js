@@ -1,15 +1,10 @@
 const joi = require("joi")
 
 module.exports = {
-  register(req, res, next) {
+  createBenefit(req, res, next) {
     const schema = {
-      first_name: joi.string(),
-      last_name: joi.string(),
-      email: joi.string().email(),
-      username: joi.string(),
-      password: joi.string(),
-      contact: joi.string().allow(''),
-      address: joi.string().allow(''),
+      name: joi.string(),
+      percentage: joi.number().precision(2)
     }
 
     const { error, value } = joi.validate(req.body, schema)

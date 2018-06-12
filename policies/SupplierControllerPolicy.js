@@ -1,15 +1,11 @@
 const joi = require("joi")
 
 module.exports = {
-  register(req, res, next) {
+  createSupplier(req, res, next) {
     const schema = {
-      first_name: joi.string(),
-      last_name: joi.string(),
-      email: joi.string().email(),
-      username: joi.string(),
-      password: joi.string(),
-      contact: joi.string().allow(''),
-      address: joi.string().allow(''),
+      name: joi.string(),
+      address: joi.string(),
+      contact: joi.string()
     }
 
     const { error, value } = joi.validate(req.body, schema)

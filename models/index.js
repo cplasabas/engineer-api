@@ -38,10 +38,11 @@ db.inventory.belongsTo(db.items, { foreignKey:  { name: 'item_id', allowNull: fa
 db.item_log.belongsTo(db.items, { foreignKey: { name: 'item_id', allowNull: false } })
 db.item_log.belongsTo(db.actions, { foreignKey: { name: 'action_id', allowNull: false } })
 db.item_log.belongsTo(db.projects, { foreignKey: { name: 'project_id', allowNull: false } })
-db.item_log.belongsTo(db.suppliers, { foreignKey: { name: 'supplier_id', allowNull: false } })
+db.item_log.belongsTo(db.suppliers, { foreignKey: { name: 'supplier_id', allowNull: true } })
 db.user_permissions.belongsTo(db.users, { foreignKey: { name: 'user_id', allowNull: false } })
 
 db.users.hasMany(db.user_permissions, { foreignKey: 'user_id', as: 'permissions' })
+
 
 db.sequelize = sequelize
 db.Sequelize = Sequelize

@@ -28,6 +28,26 @@ module.exports = {
     })
   },
 
+  async post(req, res) {
+    try {
+      var body = req.body
+
+      await benefits.create(body).then(benefit => {
+        res.status(201).send({
+          benefit
+        })
+      }).catch(() => {
+        res.status(400).send({
+          message: 'Benefit already exists.'
+        })
+      })
+    } catch (error) {
+      res.status(400).send({
+        message: 'Benefit creation failed.'
+      })
+    }
+  },
+
   update(req, res) {
     const id = req.params.id
     benefits.update(req.body, {
