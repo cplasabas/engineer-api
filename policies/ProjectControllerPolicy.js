@@ -3,10 +3,10 @@ const joi = require("joi")
 module.exports = {
   createProject(req, res, next) {
     const schema = {
-      name: joi.string(),
-      client: joi.string(),
-      date_started: joi.date(),
-      status: joi.number().integer()
+      name: joi.string().required(),
+      client: joi.string().required(),
+      date_started: joi.date().required(),
+      status: joi.string().required()
     }
 
     const { error, value } = joi.validate(req.body, schema)

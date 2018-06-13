@@ -3,13 +3,13 @@ const joi = require("joi")
 module.exports = {
   register(req, res, next) {
     const schema = {
-      first_name: joi.string(),
-      last_name: joi.string(),
-      email: joi.string().email(),
-      username: joi.string(),
-      password: joi.string(),
-      contact: joi.string().allow(''),
-      address: joi.string().allow(''),
+      first_name: joi.string().required(),
+      last_name: joi.string().required(),
+      email: joi.string().email().required(),
+      username: joi.string().required(),
+      password: joi.string().required(),
+      contact: joi.string().allow('').required(),
+      address: joi.string().allow('').required(),
     }
 
     const { error, value } = joi.validate(req.body, schema)

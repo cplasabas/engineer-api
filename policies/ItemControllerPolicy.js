@@ -3,7 +3,7 @@ const joi = require("joi")
 module.exports = {
   createItem(req, res, next) {
     const schema = {
-      name: joi.string()
+      name: joi.string().required()
     }
 
     const { error, value } = joi.validate(req.body, schema)
@@ -18,11 +18,11 @@ module.exports = {
   },
   createLog(req, res, next) {
     const schema = {
-      qty: joi.number().integer(),
-      item_id: joi.number().integer(),
-      action_id: joi.number().integer(),
-      project_id: joi.number().integer(),
-      supplier_id: joi.number().integer()
+      qty: joi.number().integer().required(),
+      item_id: joi.number().integer().required(),
+      action_id: joi.number().integer().required(),
+      project_id: joi.number().integer().required(),
+      supplier_id: joi.number().integer().required()
     }
 
     const { error, value } = joi.validate(req.body, schema)

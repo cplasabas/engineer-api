@@ -3,9 +3,9 @@ const joi = require("joi")
 module.exports = {
   createSupplier(req, res, next) {
     const schema = {
-      name: joi.string(),
-      address: joi.string(),
-      contact: joi.string()
+      name: joi.string().required(),
+      address: joi.string().required(),
+      contact: joi.string().required()
     }
 
     const { error, value } = joi.validate(req.body, schema)

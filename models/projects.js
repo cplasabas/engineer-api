@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) =>
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW
     },
-    status: DataTypes.INTEGER,
+    status: DataTypes.STRING,
     createdAt: {
       type: DataTypes.DATE,
       defaultValue: DataTypes.NOW

@@ -57,8 +57,7 @@ module.exports = {
           message: 'Password not correct.'
         })
       }
-    }).catch((err) => {
-      console.log(err)
+    }).catch(() => {
       res.status(400).send({
         message: 'Username not found.'
       })
