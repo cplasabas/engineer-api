@@ -41,6 +41,17 @@ module.exports = (app) => {
   app.put('/users/:id', guard.check(['users:read','users:write']), UserController.update)
   app.delete('/users/:id', guard.check(['users:read','users:write']), UserController.delete)
 
+  //User Permissions
+  app.post('/users/:id/permissions', [guard.check(['users:read', 'users:write']),
+    AuthControllerPolicy.createPermission], UserController.postPermission)
+  app.get('/users/:id/permissions', guard.check(['users:read', 'users:write']), UserController.indexPermission)
+  app.get('/users/:id/permissions/:permissionId', guard.check(['users:read', 'users:write']),
+    UserController.showPermission)
+  app.put('/users/:id/permissions/:permissionId', guard.check(['users:read', 'users:write']),
+    UserController.updatePermission)
+  app.delete('/users/:id/permissions/:permissionId', guard.check(['users:read', 'users:write']),
+    UserController.deletePermission)
+
   //Projects
   app.get('/projects', guard.check('projects:read'), ProjectController.index)
   app.post('/projects', [guard.check(['projects:read', 'projects:write']), ProjectControllerPolicy.createProject], ProjectController.post)

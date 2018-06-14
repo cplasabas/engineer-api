@@ -3,7 +3,7 @@ module.exports = {
   db: {
     database: "engineer",
     user: "root",
-    pass: "",
+    pass: "042895Ced!",
     options: {
       dialect: "mysql",
       host: "localhost",

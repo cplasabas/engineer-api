@@ -21,5 +21,21 @@ module.exports = {
         error: error.details[0].message
       })
     }
+  },
+  createPermission(req, res, next) {
+    const schema = {
+      table: joi.string().required(),
+      action: joi.string().required()
+    }
+
+    const { error, value } = joi.validate(req.body, schema)
+
+    if (!error) {
+      next()
+    } else {
+      res.status(400).send({
+        error: error.details[0].message
+      })
+    }
   }
 }
