@@ -3,7 +3,11 @@ const { inventory } = require('../models')
 module.exports = {
 
   index(req, res) {
-    inventory.all().then(inventory => {
+    inventory.all({include: [
+      {
+        association: "item"
+      }
+    ]}).then(inventory => {
         res.status(200).send(inventory)
     })
   },
